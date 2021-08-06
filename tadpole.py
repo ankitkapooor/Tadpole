@@ -67,15 +67,12 @@ def getResponse(ints, convo_json, msg):
                 result = random.choice(i['responses'])
                 break
     else:
-        result = "let me google that"
+        #result = "let me google that"
         url = "https://google.com/search?q="
         newlink = ""
-        if len(msg.split()[1:]) == 1:
-            result = "".join((url, msg[9:]))
-        else:
-            for word in msg.split()[1:]:
-                newlink = "+".join((newlink, word))
-            result = "".join((url, newlink))
+        for word in msg.split()[1:]:
+            newlink = "+".join((newlink, word))
+        result = "".join((url, newlink))
 
     return result
 
