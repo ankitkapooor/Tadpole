@@ -71,7 +71,7 @@ def getResponse(ints, convo_json, msg):
         url = "https://google.com/search?q="
         newlink = ""
         if len(msg.split()[1:]) == 1:
-            result = "".join((url, msg))
+            result = "".join((url, msg[9:]))
         else:
             for word in msg.split()[1:]:
                 newlink = "+".join((newlink, word))
@@ -84,7 +84,7 @@ def chatbot_response(msg):
     res = getResponse(ints, convos, msg)
     return res
 
-#discord activity section: a discord slient is created to interact with the user
+#discord activity section: a discord client is created to interact with the user
 
 client = commands.Bot(command_prefix = '!', help_command = None)
 
@@ -194,7 +194,7 @@ async def _reddit(ctx, *, message):
         text = f + f" [continue reading...]({url})"
 
     emb = discord.Embed(title = name, description = text, color = 0xf4fc58)
-    #emb.set_image(url = url)
+    emb.set_image(url = url)
     await ctx.send(embed = emb)
 
 #choose command, runs using !choose <list of options separated by 'OR'>
